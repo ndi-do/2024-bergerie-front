@@ -1,8 +1,6 @@
 import 'leaflet/dist/leaflet.css'
-import './CarteInteractive.css'
 
 function Accueil() {
-
     return (
         <div className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url('src/assets/homepage.jpg')" }}>
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
