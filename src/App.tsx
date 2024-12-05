@@ -1,11 +1,11 @@
-import PageHome from "@/pages/home";
+import PageHome from '@/pages/home'
 
 export default function App() {
-  return (
-    <>
-      <div>
-        <PageHome />
-      </div>
-    </>
-  )
+    return (
+        <>
+            <div>
+                <PageHome />
+            </div>
+        </>
+    )
 }
