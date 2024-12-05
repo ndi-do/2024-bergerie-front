@@ -33,3 +33,4 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/ndi-do/2024-bergerie-front:latest
+          provenance: false
