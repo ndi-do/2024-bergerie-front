@@ -9,7 +9,7 @@ RUN pnpm install
 
 # Build
 COPY . .
-RUN npm run build
+RUN pnpm run build
 
 # Run nginx
 FROM nginx:alpine
