@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - ci/build_docker
 
 permissions:
     contents: read
