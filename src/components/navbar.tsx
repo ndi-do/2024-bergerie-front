@@ -1,5 +1,6 @@
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useState, useEffect } from 'react'
 import { classNames } from '@/utils'
 
 const navigation = [
@@ -7,14 +8,39 @@ const navigation = [
     { name: 'Crédit', href: '#', current: false },
 ]
 
-export default function Navbar () {
+export default function Navbar() {
+    const [isVisible, setIsVisible] = useState(true)
+    const [lastScrollY, setLastScrollY] = useState(0)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY
+            if (currentScrollY > lastScrollY && currentScrollY > 50) {
+                setIsVisible(false)
+            } else {
+                setIsVisible(true)
+            }
+            setLastScrollY(currentScrollY)
+        }
+
+        window.addEventListener('scroll', handleScroll)
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [lastScrollY])
+
     return (
-        <div className="p-6">
-            <Disclosure as="nav" className="bg-[#162751] py-2 w-2/3 mx-auto rounded-sm">
+        <div
+            className={classNames(
+                isVisible ? 'translate-y-0' : '-translate-y-full',
+                'fixed top-0 left-0 right-0 z-50  transition-transform duration-300 p-4'
+            )}
+        >
+            <Disclosure as="nav" className="py-2 w-2/3 mx-auto rounded-sm bg-[#162751] shadow-md">
                 <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                     <div className="relative flex h-16 items-center justify-between">
                         <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                            {/* Mobile menu button*/}
+                            {/* Mobile menu button */}
                             <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                                 <span className="absolute -inset-0.5" />
                                 <span className="sr-only">Open main menu</span>
@@ -41,14 +67,13 @@ export default function Navbar () {
                                         aria-current={item.current ? 'page' : undefined}
                                         className={classNames(
                                             item.current ? 'bg-blue-800 text-white' : 'text-gray-500 hover:bg-blue-900 hover:text-white',
-                                            'rounded-md px-3 py-2 text-sm font-medium',
+                                            'rounded-md px-3 py-2 text-sm font-medium'
                                         )}
                                     >
                                         {item.name}
                                     </a>
                                 ))}
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -63,7 +88,7 @@ export default function Navbar () {
                                 aria-current={item.current ? 'page' : undefined}
                                 className={classNames(
                                     item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                    'block rounded-md px-3 py-2 text-base font-medium',
+                                    'block rounded-md px-3 py-2 text-base font-medium'
                                 )}
                             >
                                 {item.name}
