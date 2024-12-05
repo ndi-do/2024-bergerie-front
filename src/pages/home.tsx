@@ -1,5 +1,6 @@
 import { Element } from 'react-scroll';
 import Section from "@/components/section.tsx";
+import Accueil from './accueil';
 
 export default function PageHome () {
     const sections = [
@@ -16,6 +17,7 @@ export default function PageHome () {
 
     return (
     <div>                
+        <Accueil/>
         {sections.map((section) => (
             <Element key={section.id} name={section.id}>
                 <Section title={section.title} content={section.content} />
