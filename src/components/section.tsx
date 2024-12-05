@@ -1,7 +1,12 @@
 import { motion } from 'framer-motion';
 import './Section.css';
 
-export default function Section({ title, content }) {
+export interface SectionProps {
+    title: string;
+    content: string;
+}
+
+export default function Section({ title, content }: SectionProps) {
     return (
         <motion.div
             className="section"
