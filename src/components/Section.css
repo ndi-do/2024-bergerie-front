@@ -1,0 +1,25 @@
+/* src/components/Section.css */
+.section {
+    padding: 100px 20px;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #ffffff, #f5f5f5);
+    border-bottom: 1px solid #ddd;
+}
+
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.section p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 800px;
+    line-height: 1.5;
+}
