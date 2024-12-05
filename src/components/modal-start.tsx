@@ -4,12 +4,12 @@ interface ModalStartProps {
     onConfirm: () => void;
 }
 
-export default function ModalStart({ isOpen, onConfirm }: ModalStartProps) {
+export default function ModalStart({ isOpen, onClose, onConfirm }: ModalStartProps) {
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-lg shadow-lg p-6 max-w-md text-center">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={() => onClose()}>
+            <div className="bg-white rounded-lg shadow-lg p-6 max-w-md text-center" onClick={(e: any) => {e.stopPropagation()}}>
                 <h2 className="text-2xl font-bold mb-4">Bienvenue dans l'aventure !</h2>
                 <p className="mb-6">
                     Embarquez pour une aventure unique en suivant le parcours du Vendée Globe, une course en bateau mythique autour du monde. 
