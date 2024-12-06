@@ -1,0 +1,28 @@
+/* src/components/ClosingScreen.css */
+.closing-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.closing-screen h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.closing-screen button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.closing-screen button:hover {
+  background-color: #0056b3;
+}
