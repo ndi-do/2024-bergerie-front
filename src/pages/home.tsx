@@ -8,7 +8,7 @@ import Plancton from '@/games/collecte-plancton';
 import CoralBuilder from '@/games/coral-builder';
 import TemperatureGame from '@/games/temperature';
 import ReefRepair from '@/games/reef-repair';
-import ClosingScreen from '@/games/closing-screen';
+import FunfactPopup from '@/components/funfact';
 
 export default function PageHome() {
 
@@ -18,25 +18,32 @@ export default function PageHome() {
    const [isModalOpenCoral, setIsModalOpenCoral] = useState(false);
    const [isModalOpenTemp, setIsModalOpenTemp] = useState(false);
    const [isModalOpenReef, setIsModalOpenReef] = useState(false);
+   const [isFunfactPopupOpen, setFunfactPopupOpen] = useState(false);
+   const [currentFunfact, setCurrentFunfact] = useState<Funfact>();
+   interface Funfact {
+     title: string;
+     content: string;
+     image: string;
+   }
    const [isModalOpenClosing, setIsModalOpenClosing] = useState(false);
 
    function handleClick(type: string) {
       switch (type) {
-         case 'etape1':
-            setIsModalOpen(true);
-            break;
-         case 'etape2':
-            setIsModalOpenCourants(true);
-            break;
-         case 'etape3':
-            setIsModalOpenPlancton(true);
-            break;
-         case 'etape4':
-            setIsModalOpenCoral(true);
-            break;
+        case 'etape1':
+          setIsModalOpen(true);
+          break;
+        case 'etape2':
+          setIsModalOpenCourants(true);
+          break;
+        case 'etape3':
+          setIsModalOpenPlancton(true);
+          break;
+        case 'etape4':
+          setIsModalOpenCoral(true);
+          break;
         case 'etape8':
-            setIsModalOpenTemp(true);
-            break;
+          setIsModalOpenTemp(true);
+          break;
         case 'finale':
             setIsModalOpenReef(true);
             break;
@@ -46,7 +53,7 @@ export default function PageHome() {
          default:
             break;
       }
-   }
+    }
 
    const sections = [
       {
@@ -56,6 +63,12 @@ export default function PageHome() {
          image: 'assets/golfe_de_gascone.png',
          trait: 'assets/trait/1.png',
          globe: 'assets/globe/Golfe_de_gascogne.png',
+         funfact: {
+            title: 'Saviez-vous ?',
+            content:
+               "Le système immunitaire du corps humain agit comme une barrière contre les agents pathogènes, tout comme un récif corallien protège l'écosystème marin des menaces externes. Le système immunitaire détecte et combat les virus et bactéries, tandis que les récifs coralliens filtrent et détoxifient l'eau, maintenant ainsi un environnement sain pour la vie marine.",
+            image: 'assets/funfact/1.png',
+         },
       },
       {
          id: 'etape2',
@@ -64,6 +77,12 @@ export default function PageHome() {
          image: 'assets/anticyclone_des_acores.png',
          trait: 'assets/trait/2.png',
          globe: 'assets/globe/anticyclone_des_acores.png',
+         funfact: {
+            title: 'Saviez-vous ?',
+            content:
+               "Les nerfs du corps humain transmettent des signaux rapides pour assurer une communication fluide, tout comme les courants marins transportent des nutriments et des informations essentielles dans l'océan. Ces courants marins permettent de maintenir la vie marine en assurant la circulation d'éléments vitaux à travers différents écosystèmes.",
+            image: 'assets/funfact/2.png',
+         },
       },
       {
          id: 'etape3',
@@ -72,6 +91,12 @@ export default function PageHome() {
          image: 'assets/pot_au_noir.png',
          trait: 'assets/trait/3.png',
          globe: 'assets/globe/pot_au_noir.png',
+         funfact: {
+            title: 'Saviez-vous ?',
+            content:
+               "Le microbiote humain, composé de millions de micro-organismes, aide à maintenir l'équilibre biologique dans notre corps, tout comme le plancton est essentiel pour l'équilibre de l'océan. Ces micro-organismes, tant dans notre corps que dans l'eau, jouent un rôle crucial dans le cycle de la vie et la santé de leur environnement.",
+            image: 'assets/funfact/3.png',
+         },
       },
       {
          id: 'etape4',
@@ -80,6 +105,12 @@ export default function PageHome() {
          image: 'assets/anticyclone_de_sainte-helene.png',
          trait: 'assets/trait/4.png',
          globe: 'assets/globe/anticyclone_de_sainte_helene.png',
+         funfact: {
+            title: 'Saviez-vous ?',
+            content:
+               "Les os du corps humain soutiennent notre structure, tout comme les récifs coralliens servent de fondation pour une multitude d'espèces marines. Ces structures portantes sont essentielles pour maintenir l'intégrité et la stabilité des écosystèmes, qu’ils soient corporels ou marins.",
+            image: 'assets/funfact/4.png',
+         },
       },
       {
          id: 'etape5',
@@ -88,6 +119,12 @@ export default function PageHome() {
          image: 'assets/cap_de_bonne-esperance.png',
          trait: 'assets/trait/5.png',
          globe: 'assets/globe/cap_de_bonne_esperance.png',
+         funfact: {
+            title: 'Saviez-vous ?',
+            content:
+               "Tout comme l'océan a un équilibre chimique complexe, avec des niveaux de salinité et de pH, le corps humain doit maintenir une composition chimique précise pour fonctionner correctement. Des déséquilibres dans l'un ou l'autre peuvent perturber l'écosystème, qu’il soit humain ou marin.",
+            image: 'assets/funfact/5.png',
+         },
          quizzes: {
             data: [
                {
@@ -128,6 +165,12 @@ export default function PageHome() {
          image: 'assets/cap_leeuwin.png',
          trait: 'assets/trait/6.png',
          globe: 'assets/globe/cap_leeuwin.png',
+         funfact: {
+            title: 'Saviez-vous ?',
+            content:
+               "Le corps humain régule sa température interne grâce à des systèmes complexes, tout comme les océans régulent le climat mondial. Les courants marins tels que le Gulf Stream transportent de l'eau chaude et froide pour maintenir un équilibre thermique, tout comme notre corps ajuste sa température pour maintenir un environnement interne stable.",
+            image: 'assets/funfact/6.png',
+         },
          quizzes: {
             data: [
                {
@@ -199,7 +242,13 @@ export default function PageHome() {
             ],
             allowShuffleQuiz: false,
             allowShuffleQuizAnswers: false
-         }
+         },
+         funfact: {
+            title: 'Saviez-vous ?',
+            content:
+               "Le système digestif transforme la nourriture en énergie pour le corps, tout comme les profondeurs de l'océan transforment et recyclent des matières organiques pour nourrir l'écosystème marin. Ce processus de dégradation et de transformation est essentiel à la survie et à la régénération des deux systèmes.",
+            image: 'assets/funfact/7.png',
+         },
       },
       {
          id: 'etape8',
@@ -208,57 +257,102 @@ export default function PageHome() {
          image: 'assets/cap_horn.png',
          trait: 'assets/trait/8.png',
          globe: 'assets/globe/cap_horn.png',
+         funfact: {
+            title: 'Saviez-vous ?',
+            content:
+               "La reproduction dans le corps humain est régulée par des cycles naturels, tout comme les marées sont influencées par les cycles lunaires. Ces rythmes naturels assurent le bon déroulement de la vie, qu'il s'agisse de la naissance d'un enfant ou de la régénération des écosystèmes marins au rythme des marées.",
+            image: 'assets/funfact/8.png',
+         },
       },
+
       {
          id: 'finale',
          title: 'Finale: Retour aux Sables-d’Olonne',
          content: 'Le retour triomphal après avoir traversé l’océan Atlantique et le Vendée Globe.',
          image: 'assets/sable_olonne.png',
          trait: 'assets/trait/9.png',
-         globe: 'assets/globe/sable_olonne.png'
-      }
+         globe: 'assets/globe/sable_olonne.png',
+         funfact: {
+            title: 'Saviez-vous ?',
+            content:
+               "Le corps humain possède une incroyable capacité à se réparer et à se régénérer après une blessure, tout comme les écosystèmes marins, tels que les récifs coralliens, ont la capacité de se régénérer après une perturbation. Ces processus de réparation sont essentiels pour maintenir l'intégrité et la résilience de l'ensemble du système.",
+            image: 'assets/funfact/9.png',
+         },
+      },
    ];
 
-   return (
+   function handlePopupClose(type: string) {
+      switch (type) {
+        case 'etape1':
+          setCurrentFunfact(sections[0].funfact);
+          break;
+        case 'etape2':
+          setCurrentFunfact(sections[1].funfact);
+          break;
+        case 'etape3':
+          setCurrentFunfact(sections[2].funfact);
+          break;
+        case 'etape4':
+          setCurrentFunfact(sections[3].funfact);
+          break;
+        case 'etape5':
+          setCurrentFunfact(sections[4].funfact);
+          break;
+        case 'etape6':
+          setCurrentFunfact(sections[5].funfact);
+          break;
+        case 'etape7':
+          setCurrentFunfact(sections[6].funfact);
+          break;
+        default:
+          break;
+      }
+      setFunfactPopupOpen(true);
+    }
+
+    return (
       <div>
-         {sections.map((section) => (
-            <Element key={section.id} name={section.id}>
-               <Section id={section.id} title={section.title} content={section.content} image={section.image} trait={section.trait} globe={section.globe} quizzes={section.quizzes} clickAction={handleClick}/>
-            </Element>
-         ))}
-
-         <Popup isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-            <DefenseDesRecifs />
-         </Popup>
-
-         <Popup isOpen={isModalOpenCourants} onClose={() => setIsModalOpenCourants(false)}>
-            <RelaisDesCourants />
-         </Popup>
-
-         <Popup isOpen={isModalOpenPlancton} onClose={() => setIsModalOpenPlancton(false)}>
-            <Plancton />
-         </Popup>
-       
-         <Popup isOpen={isModalOpenCoral} onClose={() => setIsModalOpenCoral(false)}>
-            <CoralBuilder />    
-         </Popup>
-
-         <Popup isOpen={isModalOpenTemp} onClose={() => setIsModalOpenTemp(false)}>
-            <TemperatureGame />
-         </Popup>
-       
-         <Popup isOpen={isModalOpenReef} onClose={() => {
-            setIsModalOpenReef(false); 
-            setIsModalOpenClosing(true);
-            }}>
-            <ReefRepair />
-         </Popup>
-
-         <Popup isOpen={isModalOpenClosing} onClose={() => setIsModalOpenClosing(false)}>
-            <ClosingScreen />
-         </Popup>
-
-
+        {sections.map((section) => (
+          <Element key={section.id} name={section.id}>
+            <Section
+              id={section.id}
+              title={section.title}
+              content={section.content}
+              image={section.image}
+              trait={section.trait}
+              globe={section.globe}
+              quizzes={section.quizzes}
+              clickAction={handleClick}
+              funfact={section.funfact}
+            />
+          </Element>
+        ))}
+  
+        <Popup isOpen={isModalOpen} onClose={() => {setIsModalOpen(false);handlePopupClose('etape1')}}>
+          <DefenseDesRecifs />
+        </Popup>
+  
+        <Popup isOpen={isModalOpenCourants} onClose={() => {setIsModalOpenCourants(false);handlePopupClose('etape2')}}>
+          <RelaisDesCourants />
+        </Popup>
+  
+        <Popup isOpen={isModalOpenPlancton} onClose={() => {setIsModalOpenPlancton(false);handlePopupClose('etape3')}}>
+          <Plancton />
+        </Popup>
+  
+        <Popup isOpen={isModalOpenCoral} onClose={() =>  {setIsModalOpenCoral(false);handlePopupClose('etape4')}}>
+          <CoralBuilder />
+        </Popup>
+  
+        <Popup isOpen={isModalOpenTemp} onClose={() => {setIsModalOpenTemp(false);handlePopupClose('etape5')}}>
+          <TemperatureGame />
+        </Popup>
+  
+        <Popup isOpen={isModalOpenReef} onClose={() => {setIsModalOpenReef(false)}}>
+          <ReefRepair />
+        </Popup>
+  
+        <FunfactPopup isOpen={isFunfactPopupOpen} onClose={() => setFunfactPopupOpen(false)} funfact={currentFunfact!} />
       </div>
-   );
-}
+    );
+  }
