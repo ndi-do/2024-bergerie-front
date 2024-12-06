@@ -87,29 +87,29 @@ export default function PageHome() {
          quizzes: {
             data: [
                {
-                  question: "Quel est l'un des plus grands défis que les marins rencontrent lors de l'étape 5, Cap de Bonne-Espérance ?",
+                  question: "Pourquoi est-il essentiel de maintenir un équilibre chimique dans les liquides corporels ?",
                   answers: [
-                      { title: "La traversée de l'Atlantique Sud avec ses tempêtes et courants puissants", isCorrect: true },
-                      { title: "L'entrée dans l'océan Pacifique, un passage difficile", isCorrect: false },
-                      { title: "La navigation autour des îles de l'océan Indien", isCorrect: false },
-                      { title: "La gestion des températures élevées à proximité de l'Équateur", isCorrect: false }
+                      { title: "Parce que cela influence la couleur de la peau", isCorrect: false },
+                      { title: "Parce que cela affecte la digestion des aliments", isCorrect: false },
+                      { title: "Parce que des déséquilibres peuvent perturber les fonctions vitales du corps humain", isCorrect: true },
+                      { title: "Parce que cela améliore la production d'énergie", isCorrect: false }
                   ],
                   resultMessage: {
-                      success: "Bonne réponse ! L'Atlantique Sud présente de nombreux défis, notamment des tempêtes et des courants puissants.",
-                      failure: "Dommage, le plus grand défi de l'étape 5 est la traversée de l'Atlantique Sud, réputée pour ses conditions difficiles."
+                      success: "Bonne réponse ! L'équilibre chimique des liquides corporels est crucial pour les fonctions vitales du corps humain.",
+                      failure: "Dommage, l'équilibre chimique est essentiel pour maintenir les fonctions vitales du corps humain. Un déséquilibre perturbe ces fonctions."
                   }
               },
               {
-                  question: "Pourquoi les skippers doivent-ils être particulièrement vigilants lors de leur passage près du Cap de Bonne-Espérance pendant le Vendée Globe ?",
+                  question: "De quelle manière un déséquilibre dans la composition chimique des liquides corporels peut-il affecter le corps humain ?",
                   answers: [
-                      { title: "En raison de la proximité des bancs de sable et des rochers", isCorrect: true },
-                      { title: "À cause des températures extrêmes qui affectent la performance des bateaux", isCorrect: false },
-                      { title: "À cause des courants marins qui ralentissent leur vitesse", isCorrect: false },
-                      { title: "En raison de la présence de nombreux icebergs dans la région", isCorrect: false }
+                      { title: "Il peut rendre les liquides corporels plus acides, ce qui améliore la digestion", isCorrect: false },
+                      { title: "Il peut perturber l'écosystème corporel, tout comme un déséquilibre chimique affecte l'océan", isCorrect: true },
+                      { title: "Il peut rendre les liquides corporels plus salés, ce qui augmente l'énergie", isCorrect: false },
+                      { title: "Il peut diminuer la production d'hormones", isCorrect: false }
                   ],
                   resultMessage: {
-                      success: "Bonne réponse ! La zone près du Cap de Bonne-Espérance est dangereuse en raison des bancs de sable et des rochers.",
-                      failure: "Dommage, les marins doivent être vigilants à la présence de bancs de sable et de rochers dans cette région."
+                      success: "Bonne réponse ! Un déséquilibre chimique peut perturber l'écosystème corporel, de manière similaire à l'impact sur l'océan.",
+                      failure: "Dommage, un déséquilibre chimique dans le corps perturbe son écosystème interne, tout comme dans l'océan."
                   }
               }
             ],
@@ -127,31 +127,31 @@ export default function PageHome() {
          quizzes: {
             data: [
                {
-                  question: "Quel est le rôle stratégique du Cap Leeuwin (étape 6) dans le parcours du Vendée Globe ?",
+                  question: "Comment le corps humain régule-t-il sa température interne ?",
                   answers: [
-                      { title: "Il marque l'entrée dans l'océan Pacifique, un passage clé pour les skippers", isCorrect: true },
-                      { title: "Il est un point d'approvisionnement pour les marins", isCorrect: false },
-                      { title: "Il marque la fin du passage dans l'hémisphère sud", isCorrect: false },
-                      { title: "Il représente le début de la dernière étape de la course", isCorrect: false }
+                      { title: "En produisant de la chaleur uniquement pendant l'été", isCorrect: false },
+                      { title: "En ajustant uniquement la température des extrémités comme les mains et les pieds", isCorrect: false },
+                      { title: "Grâce à des systèmes complexes qui ajustent la température en fonction des besoins", isCorrect: true },
+                      { title: "En envoyant de l'eau froide dans les artères principales", isCorrect: false }
                   ],
                   resultMessage: {
-                      success: "Bonne réponse ! Le Cap Leeuwin est essentiel pour marquer l'entrée dans l'océan Pacifique.",
-                      failure: "Dommage, le Cap Leeuwin est crucial pour l'entrée dans l'océan Pacifique."
+                      success: "Bonne réponse ! Le corps humain régule sa température à l'aide de systèmes complexes qui ajustent la production et la dissipation de chaleur.",
+                      failure: "Dommage, la régulation de la température interne du corps humain se fait par des mécanismes complexes, non seulement par la production de chaleur, mais aussi par sa dissipation selon les besoins."
                   }
               },
               {
-                  question: "Quel est l'impact du passage du Cap Leeuwin (étape 6) sur les marins pendant le Vendée Globe ?",
+                  question: "Comment les océans contribuent-ils à la régulation du climat mondial ?",
                   answers: [
-                      { title: "Les marins doivent affronter des vagues énormes et des conditions de mer imprévisibles", isCorrect: true },
-                      { title: "Les marins sont confrontés à des températures glaciales, proches du zéro absolu", isCorrect: false },
-                      { title: "Les marins passent par des eaux très calmes, ce qui ralentit leur progression", isCorrect: false },
-                      { title: "Les marins doivent éviter des bancs de glace qui flottent dans la région", isCorrect: false }
+                     { title: "Les océans transportent des courants chauds et froids qui aident à maintenir un équilibre thermique", isCorrect: true },
+                     { title: "Les océans refroidissent l'atmosphère en générant des vents forts", isCorrect: false },
+                     { title: "Les océans se réchauffent uniquement pendant la nuit pour stabiliser les températures", isCorrect: false },
+                     { title: "Les océans libèrent de la chaleur dans l'atmosphère pour stabiliser les températures", isCorrect: true }
                   ],
                   resultMessage: {
-                      success: "Bonne réponse ! Le passage près du Cap Leeuwin est marqué par des vagues énormes et des conditions maritimes très changeantes.",
-                      failure: "Dommage, les conditions de mer près du Cap Leeuwin sont connues pour être imprévisibles et difficiles."
+                     success: "Bonne réponse ! Les courants marins transportent de l'eau chaude et froide, et les océans libèrent également de la chaleur dans l'atmosphère pour maintenir l'équilibre thermique.",
+                     failure: "Dommage, les océans régulent le climat en transportant de l'eau chaude et froide grâce aux courants marins et en libérant de la chaleur dans l'atmosphère pour stabiliser les températures."
                   }
-              }
+               }
             ],
             allowShuffleQuiz: false,
             allowShuffleQuizAnswers: false
@@ -167,31 +167,31 @@ export default function PageHome() {
          quizzes: {
             data: [
                {
-                  question: "Quel est le point Nemo, et pourquoi est-il important lors de la course du Vendée Globe ?",
+                  question: "Quel est le rôle principal du système digestif dans le corps humain ?",
                   answers: [
-                     { title: "Le point Nemo est un endroit sur Terre où il n'y a aucune terre à proximité", isCorrect: true },
-                     { title: "Le point Nemo est le nom d'un bateau de course du Vendée Globe", isCorrect: false },
-                     { title: "Le point Nemo est une île où les marins font une escale pendant la course", isCorrect: false },
-                     { title: "Le point Nemo est le lieu le plus proche de l'Antarctique", isCorrect: false }
+                      { title: "Produire des hormones pour la croissance", isCorrect: false },
+                      { title: "Transformer la nourriture en énergie pour le corps", isCorrect: true },
+                      { title: "Stocker de la nourriture pour une utilisation future", isCorrect: false },
+                      { title: "Filtrer les déchets toxiques du sang", isCorrect: false }
                   ],
                   resultMessage: {
-                     success: "Bonne réponse ! Le point Nemo est en effet un endroit situé dans l'océan Pacifique, où il n'y a aucune terre à des milliers de kilomètres autour.",
-                     failure: "Dommage, ce n'est pas la bonne réponse. Le point Nemo est un lieu situé dans l'océan Pacifique, éloigné de toute terre."
+                      success: "Bonne réponse ! Le système digestif transforme la nourriture en énergie pour alimenter les fonctions du corps.",
+                      failure: "Dommage, le système digestif a pour rôle principal de transformer la nourriture en énergie, ce qui permet au corps de fonctionner correctement."
                   }
-               },
-               {
-                  question: "Quel est l'un des défis majeurs pour les skippers lors du passage près du point Nemo pendant le Vendée Globe ?",
+              },
+              {
+                  question: "Comment les profondeurs de l'océan contribuent-elles à la régénération de l'écosystème marin ?",
                   answers: [
-                     { title: "La gestion de l'approvisionnement en nourriture", isCorrect: false },
-                     { title: "La gestion de la solitude et de l'isolement", isCorrect: true },
-                     { title: "La navigation à travers des eaux peu profondes", isCorrect: false },
-                     { title: "La prise de décisions rapides pour éviter des obstacles", isCorrect: false }
+                      { title: "En générant des vagues pour produire de l'énergie", isCorrect: false },
+                      { title: "En émettant des gaz qui purifient l'atmosphère", isCorrect: false },
+                      { title: "En filtrant les polluants de l'eau pour améliorer sa clarté", isCorrect: false },
+                      { title: "En recyclant des matières organiques pour nourrir l'écosystème marin", isCorrect: true }
                   ],
                   resultMessage: {
-                     success: "Bonne réponse ! Le passage près du point Nemo représente un défi psychologique majeur en raison de l'isolement total des marins.",
-                     failure: "Dommage, ce n'est pas la bonne réponse. La gestion de la solitude et de l'isolement est un véritable défi pour les skippers près du point Nemo."
+                      success: "Bonne réponse ! Les profondeurs marines jouent un rôle clé dans le recyclage des matières organiques, maintenant l'équilibre écologique de l'océan.",
+                      failure: "Dommage, les profondeurs de l'océan recyclent les matières organiques, ce qui est essentiel pour nourrir et régénérer l'écosystème marin."
                   }
-               }   
+              }
             ],
             allowShuffleQuiz: false,
             allowShuffleQuizAnswers: false
