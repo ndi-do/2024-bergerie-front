@@ -23,7 +23,7 @@ export interface SectionProps {
     clickAction?: (type: string) => void;
 }
 
-export default function Section({ id, title, content, image, trait, globe, quizzes }: SectionProps) {
+export default function Section({ id, title, content, image, trait, globe, quizzes, clickAction }: SectionProps) {
     const [showQuestions, setShowQuestions] = useState(false);
 
     if(!clickAction) {

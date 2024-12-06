@@ -5,6 +5,9 @@ import Popup from "@/components/popup";
 import DefenseDesRecifs from "@/games/defense-des-recifs.tsx";
 import RelaisDesCourants from '@/games/relais-des-courants';
 import Plancton from '@/games/collecte-plancton';
+import CoralBuilder from '@/games/coral-builder';
+import TemperatureGame from '@/games/temperature';
+import ReefRepair from '@/games/reef-repair';
 
 export default function PageHome() {
 
@@ -233,11 +236,11 @@ export default function PageHome() {
          </Popup>
        
          <Popup isOpen={isModalOpenCoral} onClose={() => setIsModalOpenCoral(false)}>
-             <CoralBuilder />    
+            <CoralBuilder />    
          </Popup>
 
          <Popup isOpen={isModalOpenTemp} onClose={() => setIsModalOpenTemp(false)}>
-              <TemperatureGame />
+            <TemperatureGame />
          </Popup>
        
        <Popup isOpen={isModalOpenReef} onClose={() => setIsModalOpenReef(false)}>
