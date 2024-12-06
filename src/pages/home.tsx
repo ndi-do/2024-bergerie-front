@@ -71,8 +71,8 @@ export default function PageHome() {
                   }
               }
             ],
-            allowShuffleQuiz: true,
-            allowShuffleQuizAnswers: true
+            allowShuffleQuiz: false,
+            allowShuffleQuizAnswers: false
          }
       },
       {
@@ -111,8 +111,8 @@ export default function PageHome() {
                   }
               }
             ],
-            allowShuffleQuiz: true,
-            allowShuffleQuizAnswers: true
+            allowShuffleQuiz: false,
+            allowShuffleQuizAnswers: false
          }
       },
       {
@@ -151,8 +151,8 @@ export default function PageHome() {
                   }
                }   
             ],
-            allowShuffleQuiz: true,
-            allowShuffleQuizAnswers: true
+            allowShuffleQuiz: false,
+            allowShuffleQuizAnswers: false
          }
       },
       {
