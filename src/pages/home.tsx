@@ -109,7 +109,7 @@ export default function PageHome() {
             title: 'Saviez-vous ?',
             content:
                "Les os du corps humain soutiennent notre structure, tout comme les récifs coralliens servent de fondation pour une multitude d'espèces marines. Ces structures portantes sont essentielles pour maintenir l'intégrité et la stabilité des écosystèmes, qu’ils soient corporels ou marins.",
-            image: 'asssets/funfact/4.png',
+            image: 'assets/funfact/4.png',
          },
       },
       {
