@@ -19,7 +19,6 @@ export default function PageHome() {
    const [isModalOpenReef, setIsModalOpenReef] = useState(false);
 
    function handleClick(type: string) {
-      console.log(type);
       switch (type) {
          case 'etape1':
             setIsModalOpen(true);
