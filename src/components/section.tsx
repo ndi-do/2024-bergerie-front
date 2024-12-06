@@ -2,22 +2,26 @@ import { motion } from 'framer-motion';
 import './Section.css';
 import { useState } from 'react';
 import Popup from './popup';
-import QuizForm from './quiz-form';
+import QuizzesForm from './quiz/quizzes-form';
 
 export interface SectionProps {
-   title: string;
-   content: string;
-   image: string;
-   trait: string;
-   globe: string;
-    quiz?: {
-        question: string;
-        answers: { title: string, isCorrect: boolean }[];
-        resultMessage: { success: string, failure: string };
+    title: string;
+    content: string;
+    image: string;
+    trait: string;
+    globe: string;
+    quizzes?: {
+        data: {
+            question: string;
+            answers: { title: string, isCorrect: boolean }[];
+            resultMessage: { success: string, failure: string };
+        }[];
+        allowShuffleQuiz: boolean;
+        allowShuffleQuizAnswers: boolean;
     }
 }
 
-export default function Section({ title, content, image, trait, globe, quiz }: SectionProps) {
+export default function Section({ title, content, image, trait, globe, quizzes }: SectionProps) {
     const [showQuestions, setShowQuestions] = useState(false);
 
    return (
@@ -40,20 +44,20 @@ export default function Section({ title, content, image, trait, globe, quiz }: S
             <h2 className="text-4xl font-bold mb-4">{title}</h2>
             <p className="text-lg">{content}</p>
             {
-                quiz && (
+                quizzes && (
                     <>
-                    <button
-                        onClick={() => setShowQuestions(true)}
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-4"
-                    >Question</button>
+                        <button
+                            onClick={() => setShowQuestions(true)}
+                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-4"
+                        >Question</button>
 
-                    <Popup isOpen={showQuestions} onClose={() => setShowQuestions(false)}>
-                        <QuizForm
-                            question={quiz.question}
-                            answers={quiz.answers}
-                            resultMessage={quiz.resultMessage}
-                        />
-                    </Popup>
+                        <Popup isOpen={showQuestions} onClose={() => setShowQuestions(false)}>
+                            <QuizzesForm
+                                quizzes={quizzes.data}
+                                allowShuffleQuiz={quizzes.allowShuffleQuiz}
+                                allowShuffleAnswers={quizzes.allowShuffleQuizAnswers}
+                            />
+                        </Popup>
                     </>
                 )
             }

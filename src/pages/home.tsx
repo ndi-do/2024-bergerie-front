@@ -42,6 +42,38 @@ export default function PageHome() {
          image: 'assets/cap_de_bonne-esperance.png',
          trait: 'assets/trait/5.png',
          globe: 'assets/globe/cap_de_bonne_esperance.png',
+         quizzes: {
+            data: [
+               {
+                  question: "Quel est l'un des plus grands défis que les marins rencontrent lors de l'étape 5, Cap de Bonne-Espérance ?",
+                  answers: [
+                      { title: "La traversée de l'Atlantique Sud avec ses tempêtes et courants puissants", isCorrect: true },
+                      { title: "L'entrée dans l'océan Pacifique, un passage difficile", isCorrect: false },
+                      { title: "La navigation autour des îles de l'océan Indien", isCorrect: false },
+                      { title: "La gestion des températures élevées à proximité de l'Équateur", isCorrect: false }
+                  ],
+                  resultMessage: {
+                      success: "Bonne réponse ! L'Atlantique Sud présente de nombreux défis, notamment des tempêtes et des courants puissants.",
+                      failure: "Dommage, le plus grand défi de l'étape 5 est la traversée de l'Atlantique Sud, réputée pour ses conditions difficiles."
+                  }
+              },
+              {
+                  question: "Pourquoi les skippers doivent-ils être particulièrement vigilants lors de leur passage près du Cap de Bonne-Espérance pendant le Vendée Globe ?",
+                  answers: [
+                      { title: "En raison de la proximité des bancs de sable et des rochers", isCorrect: true },
+                      { title: "À cause des températures extrêmes qui affectent la performance des bateaux", isCorrect: false },
+                      { title: "À cause des courants marins qui ralentissent leur vitesse", isCorrect: false },
+                      { title: "En raison de la présence de nombreux icebergs dans la région", isCorrect: false }
+                  ],
+                  resultMessage: {
+                      success: "Bonne réponse ! La zone près du Cap de Bonne-Espérance est dangereuse en raison des bancs de sable et des rochers.",
+                      failure: "Dommage, les marins doivent être vigilants à la présence de bancs de sable et de rochers dans cette région."
+                  }
+              }
+            ],
+            allowShuffleQuiz: true,
+            allowShuffleQuizAnswers: true
+         }
       },
       {
          id: 'etape6',
@@ -50,6 +82,38 @@ export default function PageHome() {
          image: 'assets/cap_leeuwin.png',
          trait: 'assets/trait/6.png',
          globe: 'assets/globe/cap_leeuwin.png',
+         quizzes: {
+            data: [
+               {
+                  question: "Quel est le rôle stratégique du Cap Leeuwin (étape 6) dans le parcours du Vendée Globe ?",
+                  answers: [
+                      { title: "Il marque l'entrée dans l'océan Pacifique, un passage clé pour les skippers", isCorrect: true },
+                      { title: "Il est un point d'approvisionnement pour les marins", isCorrect: false },
+                      { title: "Il marque la fin du passage dans l'hémisphère sud", isCorrect: false },
+                      { title: "Il représente le début de la dernière étape de la course", isCorrect: false }
+                  ],
+                  resultMessage: {
+                      success: "Bonne réponse ! Le Cap Leeuwin est essentiel pour marquer l'entrée dans l'océan Pacifique.",
+                      failure: "Dommage, le Cap Leeuwin est crucial pour l'entrée dans l'océan Pacifique."
+                  }
+              },
+              {
+                  question: "Quel est l'impact du passage du Cap Leeuwin (étape 6) sur les marins pendant le Vendée Globe ?",
+                  answers: [
+                      { title: "Les marins doivent affronter des vagues énormes et des conditions de mer imprévisibles", isCorrect: true },
+                      { title: "Les marins sont confrontés à des températures glaciales, proches du zéro absolu", isCorrect: false },
+                      { title: "Les marins passent par des eaux très calmes, ce qui ralentit leur progression", isCorrect: false },
+                      { title: "Les marins doivent éviter des bancs de glace qui flottent dans la région", isCorrect: false }
+                  ],
+                  resultMessage: {
+                      success: "Bonne réponse ! Le passage près du Cap Leeuwin est marqué par des vagues énormes et des conditions maritimes très changeantes.",
+                      failure: "Dommage, les conditions de mer près du Cap Leeuwin sont connues pour être imprévisibles et difficiles."
+                  }
+              }
+            ],
+            allowShuffleQuiz: true,
+            allowShuffleQuizAnswers: true
+         }
       },
       {
          id: 'etape7',
@@ -58,19 +122,38 @@ export default function PageHome() {
          image: 'assets/point_nemo.png',
          trait: 'assets/trait/7.png',
          globe: 'assets/globe/point_nemo.png',
-         quiz: {
-            question: "Quel est l'un des défis majeurs pour les skippers lors du passage près du point Nemo pendant le Vendée Globe ?",
-            answers: [
-               { title: "La gestion de l'approvisionnement en nourriture", isCorrect: false },
-               { title: "La gestion de la solitude et de l'isolement", isCorrect: true },
-               { title: 'La navigation à travers des eaux peu profondes', isCorrect: false },
-               { title: 'La prise de décisions rapides pour éviter des obstacles', isCorrect: false },
+         quizzes: {
+            data: [
+               {
+                  question: "Quel est le point Nemo, et pourquoi est-il important lors de la course du Vendée Globe ?",
+                  answers: [
+                     { title: "Le point Nemo est un endroit sur Terre où il n'y a aucune terre à proximité", isCorrect: true },
+                     { title: "Le point Nemo est le nom d'un bateau de course du Vendée Globe", isCorrect: false },
+                     { title: "Le point Nemo est une île où les marins font une escale pendant la course", isCorrect: false },
+                     { title: "Le point Nemo est le lieu le plus proche de l'Antarctique", isCorrect: false }
+                  ],
+                  resultMessage: {
+                     success: "Bonne réponse ! Le point Nemo est en effet un endroit situé dans l'océan Pacifique, où il n'y a aucune terre à des milliers de kilomètres autour.",
+                     failure: "Dommage, ce n'est pas la bonne réponse. Le point Nemo est un lieu situé dans l'océan Pacifique, éloigné de toute terre."
+                  }
+               },
+               {
+                  question: "Quel est l'un des défis majeurs pour les skippers lors du passage près du point Nemo pendant le Vendée Globe ?",
+                  answers: [
+                     { title: "La gestion de l'approvisionnement en nourriture", isCorrect: false },
+                     { title: "La gestion de la solitude et de l'isolement", isCorrect: true },
+                     { title: "La navigation à travers des eaux peu profondes", isCorrect: false },
+                     { title: "La prise de décisions rapides pour éviter des obstacles", isCorrect: false }
+                  ],
+                  resultMessage: {
+                     success: "Bonne réponse ! Le passage près du point Nemo représente un défi psychologique majeur en raison de l'isolement total des marins.",
+                     failure: "Dommage, ce n'est pas la bonne réponse. La gestion de la solitude et de l'isolement est un véritable défi pour les skippers près du point Nemo."
+                  }
+               }   
             ],
-            resultMessage: {
-               success: "Bonne réponse ! Le passage près du point Nemo représente un défi psychologique majeur en raison de l'isolement total des marins.",
-               failure: "Dommage, ce n'est pas la bonne réponse. La gestion de la solitude et de l'isolement est un véritable défi pour les skippers près du point Nemo.",
-            },
-         },
+            allowShuffleQuiz: true,
+            allowShuffleQuizAnswers: true
+         }
       },
       {
          id: 'etape8',
@@ -94,7 +177,7 @@ export default function PageHome() {
       <div>
          {sections.map((section) => (
             <Element key={section.id} name={section.id}>
-               <Section title={section.title} content={section.content} image={section.image} trait={section.trait} globe={section.globe} quiz={section.quiz} />
+               <Section title={section.title} content={section.content} image={section.image} trait={section.trait} globe={section.globe} quizzes={section.quizzes} />
             </Element>
          ))}
       </div>
