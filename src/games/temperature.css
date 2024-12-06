@@ -1,0 +1,62 @@
+.game-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .bar-container {
+    position: relative;
+    height: 50px;
+    background-color: #ccc;
+    margin: 20px 0;
+    width: 100%;
+  }
+  
+  .bar {
+    height: 100%;
+    background-color: #1e90ff;
+  }
+  
+  .moon-phase {
+    position: absolute;
+    top: 60px; /* Modifié pour descendre la lune et la rendre visible */
+    font-size: 30px;
+    transition: left 0.5s;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+  
+  .result {
+    margin-top: 20px;
+    font-size: 20px;
+  }
+  
+  .correct {
+    color: green;
+  }
+  
+  .incorrect {
+    color: red;
+  }
+  
+  .victory-message {
+    margin-top: 20px;
+    font-size: 24px;
+    color: green;
+    font-weight: bold;
+  }
+  
+  .score {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+  }
+
+  .game-over {
+    text-align: center;
+    color: green;
+}
+  

@@ -9,6 +9,7 @@ import DefenseDesRecifs from "@/games/defense-des-recifs.tsx";
 import RelaisDesCourants from './games/relais-des-courants';
 import Plancton from './games/collecte-plancton';
 import CoralBuilder from './games/coral-builder';
+import TemperatureGame from './games/temperature';
 // import CarteInteractive from "@/pages/carte.tsx";
 
 export default function App() {
@@ -16,8 +17,7 @@ export default function App() {
     const [isModalOpenCourants, setIsModalOpenCourants] = useState(false);
     const [isModalOpenPlancton, setIsModalOpenPlancton] = useState(false);
     const [isModalOpenCoral, setIsModalOpenCoral] = useState(false);
-
-
+    const [isModalOpenTemp, setIsModalOpenTemp] = useState(false);
 
 
     return (
@@ -43,6 +43,10 @@ export default function App() {
                     Coral Builder
                 </Button>
 
+                <Button onClick={() => setIsModalOpenTemp(true)}>
+                    Température de la planète
+                </Button>
+
                 <Popup isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
                     <DefenseDesRecifs />
                 </Popup>
@@ -57,6 +61,10 @@ export default function App() {
 
                 <Popup isOpen={isModalOpenCoral} onClose={() => setIsModalOpenCoral(false)}>
                     <CoralBuilder />    
+                </Popup>
+
+                <Popup isOpen={isModalOpenTemp} onClose={() => setIsModalOpenTemp(false)}>
+                    <TemperatureGame />
                 </Popup>
 
                 <Routes>
