@@ -18,8 +18,6 @@ export interface SectionProps {
 }
 
 export default function Section({ title, content, image, trait, globe, quiz }: SectionProps) {
-   console.log(image);
-   console.log(trait);
     const [showQuestions, setShowQuestions] = useState(false);
 
    return (
@@ -41,7 +39,6 @@ export default function Section({ title, content, image, trait, globe, quiz }: S
          <div className="bg-black bg-opacity-50 p-6 rounded-lg text-center max-w-2xl z-20">
             <h2 className="text-4xl font-bold mb-4">{title}</h2>
             <p className="text-lg">{content}</p>
-         </div>
             {
                 quiz && (
                     <>
@@ -60,6 +57,7 @@ export default function Section({ title, content, image, trait, globe, quiz }: S
                     </>
                 )
             }
+         </div>
       </motion.div>
    );
 }

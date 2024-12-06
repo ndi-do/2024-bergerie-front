@@ -49,7 +49,7 @@ export default function QuizForm({ question, answers, resultMessage }: QuizFormP
     };
 
     return (
-        <form className="flex flex-col items-center gap-6 mt-6" onSubmit={handleSubmit}>
+        <form className="flex flex-col items-center gap-6 mt-6 text-black" onSubmit={handleSubmit}>
             <h3 className="font-bold text-lg">{question}</h3>
             <p className="text-sm text-left w-full max-w-[500px]">
                 {allowMultipleAnswers
