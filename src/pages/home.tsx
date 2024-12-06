@@ -59,18 +59,18 @@ export default function PageHome() {
          trait: 'assets/trait/7.png',
          globe: 'assets/globe/point_nemo.png',
          quiz: {
-            "question": "Quel est l'un des défis majeurs pour les skippers lors du passage près du point Nemo pendant le Vendée Globe ?",
-            "answers": [
-                { "title": "La gestion de l'approvisionnement en nourriture", "isCorrect": false },
-                { "title": "La gestion de la solitude et de l'isolement", "isCorrect": true },
-                { "title": "La navigation à travers des eaux peu profondes", "isCorrect": false },
-                { "title": "La prise de décisions rapides pour éviter des obstacles", "isCorrect": false }
+            question: "Quel est l'un des défis majeurs pour les skippers lors du passage près du point Nemo pendant le Vendée Globe ?",
+            answers: [
+               { title: "La gestion de l'approvisionnement en nourriture", isCorrect: false },
+               { title: "La gestion de la solitude et de l'isolement", isCorrect: true },
+               { title: 'La navigation à travers des eaux peu profondes', isCorrect: false },
+               { title: 'La prise de décisions rapides pour éviter des obstacles', isCorrect: false },
             ],
-            "resultMessage": {
-                "success": "Bonne réponse ! Le passage près du point Nemo représente un défi psychologique majeur en raison de l'isolement total des marins.",
-                "failure": "Dommage, ce n'est pas la bonne réponse. La gestion de la solitude et de l'isolement est un véritable défi pour les skippers près du point Nemo."
-            }
-        }
+            resultMessage: {
+               success: "Bonne réponse ! Le passage près du point Nemo représente un défi psychologique majeur en raison de l'isolement total des marins.",
+               failure: "Dommage, ce n'est pas la bonne réponse. La gestion de la solitude et de l'isolement est un véritable défi pour les skippers près du point Nemo.",
+            },
+         },
       },
       {
          id: 'etape8',
