@@ -15,7 +15,8 @@
 /* Conteneur principal de la popup */
 .popup-container {
     width: 90%;
-    height: 90%; /* Ajuste la hauteur pour permettre le scroll */
+    height: 80%; /* Ajuste la hauteur pour permettre le scroll */
+    margin-bottom: 10%;
     background: white;
     border-radius: 20px 20px 0 0;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
@@ -32,11 +33,12 @@
     display: none; /* For Chrome, Safari, and Opera */
 }
 
-/* Contenu de la popup */
 .popup-content {
     flex: 1;
-    overflow-y: auto; /* Active le scroll si le contenu dépasse */
+    overflow-y: auto;
+    max-height: calc(110%); /* Ajuste la hauteur pour rester dans la limite de la popup */
 }
+
 
 /* Bouton de fermeture */
 .close-button {
