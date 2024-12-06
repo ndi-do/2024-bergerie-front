@@ -36,7 +36,7 @@ export default function PageHome() {
         case 'etape8':
             setIsModalOpenTemp(true);
             break;
-        case 'etape9':
+        case 'finale':
             setIsModalOpenReef(true);
             break;
          default:
