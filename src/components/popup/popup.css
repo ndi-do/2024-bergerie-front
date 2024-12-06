@@ -33,11 +33,12 @@
     display: none; /* For Chrome, Safari, and Opera */
 }
 
-/* Contenu de la popup */
 .popup-content {
     flex: 1;
-    overflow-y: auto; /* Active le scroll si le contenu dépasse */
+    overflow-y: auto;
+    max-height: calc(110%); /* Ajuste la hauteur pour rester dans la limite de la popup */
 }
+
 
 /* Bouton de fermeture */
 .close-button {
