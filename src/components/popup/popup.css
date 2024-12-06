@@ -6,7 +6,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
-    z-index: 1000;
+    z-index: 999;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -27,6 +27,7 @@
     overflow-y: auto; /* Active le scroll uniquement dans la popup */
     scrollbar-width: none; /* For Firefox */
     -ms-overflow-style: none;
+    z-index: 1000;
 }
 
 .popup-container::-webkit-scrollbar {

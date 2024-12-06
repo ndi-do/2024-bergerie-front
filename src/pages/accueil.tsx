@@ -14,7 +14,7 @@ export default function Accueil() {
     };
 
     return (
-        <div className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url('/assets/homepage.jpg')" }}>
+        <div className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url('/assets/homepage.jpg')"}} id="homepage">
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                 <div className="text-center text-white p-6 rounded-lg">
                     <h1 className="text-4xl font-bold mb-4">Bienvenue sur Race for Water!</h1>

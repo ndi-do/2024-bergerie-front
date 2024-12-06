@@ -1,5 +1,16 @@
 import { Element } from 'react-scroll';
 import Section from '@/components/section.tsx';
+import {useState} from "react";
+import Popup from "@/components/popup";
+import DefenseDesRecifs from "@/games/defense-des-recifs.tsx";
+import RelaisDesCourants from '@/games/relais-des-courants';
+import Plancton from '@/games/collecte-plancton';
+import CoralBuilder from '@/games/coral-builder';
+import TemperatureGame from '@/games/temperature';
+import ReefRepair from '@/games/reef-repair';
+import FunfactPopup from '@/components/funfact';
+import ClosingScreen from '@/games/closing-screen';
+import { scroller } from 'react-scroll';
 
 export default function PageHome() {
    const sections = [
@@ -166,11 +177,64 @@ export default function PageHome() {
 
    return (
       <div>
-         {sections.map((section) => (
-            <Element key={section.id} name={section.id}>
-               <Section title={section.title} content={section.content} image={section.image} trait={section.trait} globe={section.globe} quiz={section.quiz} />
-            </Element>
-         ))}
+        {sections.map((section) => (
+          <Element key={section.id} name={section.id}>
+            <Section
+              id={section.id}
+              title={section.title}
+              content={section.content}
+              image={section.image}
+              trait={section.trait}
+              globe={section.globe}
+              quizzes={section.quizzes}
+              clickAction={handleClick}
+              funfact={section.funfact}
+            />
+          </Element>
+        ))}
+  
+        <Popup isOpen={isModalOpen} onClose={() => {setIsModalOpen(false);handlePopupClose('etape1')}}>
+          <DefenseDesRecifs />
+        </Popup>
+  
+        <Popup isOpen={isModalOpenCourants} onClose={() => {setIsModalOpenCourants(false);handlePopupClose('etape2')}}>
+          <RelaisDesCourants />
+        </Popup>
+  
+        <Popup isOpen={isModalOpenPlancton} onClose={() => {setIsModalOpenPlancton(false);handlePopupClose('etape3')}}>
+          <Plancton />
+        </Popup>
+  
+        <Popup isOpen={isModalOpenCoral} onClose={() =>  {setIsModalOpenCoral(false);handlePopupClose('etape4')}}>
+          <CoralBuilder />
+        </Popup>
+  
+        <Popup isOpen={isModalOpenTemp} onClose={() => {setIsModalOpenTemp(false);handlePopupClose('etape5')}}>
+          <TemperatureGame />
+        </Popup>
+  
+        <Popup isOpen={isModalOpenReef} onClose={() => {setIsModalOpenReef(false)}}>
+          <ReefRepair />
+        </Popup>
+  
+        <FunfactPopup isOpen={isFunfactPopupOpen} onClose={() => setFunfactPopupOpen(false)} funfact={currentFunfact!} />
+
+        <Popup isOpen={isModalOpenReef} onClose={() => {
+            setIsModalOpenReef(false); 
+            setIsModalOpenClosing(true);
+            }}>
+            <ReefRepair />
+         </Popup>
+
+         <Popup isOpen={isModalOpenClosing} onClose={() => {
+            setIsModalOpenClosing(false);
+            scroller.scrollTo('homepage', {
+               duration: 800,
+               smooth: 'easeInOutQuart',
+           });
+         }}>
+            <ClosingScreen />
+         </Popup>
       </div>
    );
 }
