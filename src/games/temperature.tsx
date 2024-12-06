@@ -65,7 +65,7 @@ const TemperatureGame = () => {
 
   return (
     <div className="game-container">
-      <h1>Synchronisation des Marées</h1>
+      <h1 className="font-bold">Synchronisation des Marées</h1>
       <p>Essayez de synchroniser la marée avec la lune en cliquant au bon moment !</p>
       
       <div className="moon-phase" style={{ left: `${lunarPhase}%` }}>

@@ -99,6 +99,11 @@ const Grid = () => {
 
   return (
     <div>
+      <div className='flex flex-col items-center'>
+        <h1 className="font-bold">Échange d'informations</h1>
+        <p>Reliez les deux extrémités de même couleur sans aucun chevauchement de ligne.</p>
+      </div>
+
       {/* Palette de couleurs */}
       <div style={{ marginBottom: '10px' }}>
         <button onClick={() => handleColorSelect('purple')} style={{ backgroundColor: 'purple', width: '30px', height: '30px', margin: '5px' }} />

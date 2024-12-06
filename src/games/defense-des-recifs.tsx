@@ -66,7 +66,8 @@ export default function DefenseDesRecifs () {
 
     return (
         <div className="defense-game">
-            <h2>Défense des Récifs</h2>
+            <h1 className="font-bold">Défense des Récifs</h1>
+            <p>Détruisez les bactéries avant qu'elles ne touchent le fond marin !</p>
             <p>Score : {score}</p>
             <div className="reef-area">
                 {pollutants.map((pollutant) => (

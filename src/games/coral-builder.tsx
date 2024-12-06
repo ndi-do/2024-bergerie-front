@@ -62,37 +62,43 @@ const CoralBuilder = () => {
   };
 
   return (
-    <div className="game-container">
-      <div className="game-area">
-        {blocks.map((block, index) => (
-          <div
-            key={index}
-            className="block"
-            style={{ left: `${block.x}%`, bottom: `${block.y * 50}px` }}
-          />
-        ))}
-        {!gameOver && !win && (
-          <div
-            className="current-block"
-            style={{ left: `${currentBlock.x}%`, bottom: `${stackHeight * 50}px` }}
-          />
-        )}
-        {gameOver && <div className="game-over">Game Over! 🎮</div>}
-        {win && (
-          <div className="win-message">
-            Félicitations ! Vous protégez la vie marine grâce à votre barrière de corail 🐠🌊
-          </div>
+    <>
+      <div className="flex flex-col items-center">
+        <h1 className="font-bold">Coral Builder</h1>
+        <p>Construisez le plus grand récif corallien en empilant des coraux.</p>
+      </div>
+      <div className="game-container">
+        <div className="game-area">
+          {blocks.map((block, index) => (
+            <div
+              key={index}
+              className="block"
+              style={{ left: `${block.x}%`, bottom: `${block.y * 50}px` }}
+            />
+          ))}
+          {!gameOver && !win && (
+            <div
+              className="current-block"
+              style={{ left: `${currentBlock.x}%`, bottom: `${stackHeight * 50}px` }}
+            />
+          )}
+          {gameOver && <div className="game-over">Game Over! 🎮</div>}
+          {win && (
+            <div className="win-message">
+              Félicitations ! Vous protégez la vie marine grâce à votre barrière de corail 🐠🌊
+            </div>
+          )}
+        </div>
+        <button onClick={handleDrop} disabled={gameOver || win}>
+          Drop Block
+        </button>
+        {(gameOver || win) && (
+          <button onClick={handleRestart} className="restart-btn">
+            Restart
+          </button>
         )}
       </div>
-      <button onClick={handleDrop} disabled={gameOver || win}>
-        Drop Block
-      </button>
-      {(gameOver || win) && (
-        <button onClick={handleRestart} className="restart-btn">
-          Restart
-        </button>
-      )}
-    </div>
+    </>
   );
 };
 

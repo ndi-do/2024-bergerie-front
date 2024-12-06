@@ -105,7 +105,8 @@ export default function Plancton() {
 
     return (
         <div className="defense-game">
-            <h2>Collecte de planctons</h2>
+            <h1 className="font-bold">Collecte de planctons</h1>
+            <p>Attrapez les bonnes bactéries (vertes) qui tombent, tout en évitant les mauvaises (rouges) en vous aidant des flèches de votre clavier.            </p>
             <p>Score : {score}</p>
             <p>Temps restant : {timeLeft}s</p>
             <div className="reef-area">

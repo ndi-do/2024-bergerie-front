@@ -65,24 +65,30 @@ const repairZone = (id: number) => {
   }, [gameOver, intervalTime]);
 
   return (
-    <div className="reef-container">
-      <h1>Récif en Réparation</h1>
-      <p>Score: {score}</p>
-      <div className="reef">
-        {damagedZones.map((zone) => (
-          <div
-            key={zone.id}
-            className="damaged-zone"
-            style={{
-              left: `${zone.x}%`,
-              top: `${zone.y}%`,
-            }}
-            onClick={() => repairZone(zone.id)}
-          />
-        ))}
+    <>
+      <div className="flex flex-col items-center">
+        <h1 className="font-bold">Récif en Réparation</h1>
+        <p>Cliquez sur les zones endommagées du récif pour les régénérer avant que de nouvelles zones ne soient abîmées.</p>
       </div>
-      {gameOver && <div className="game-over">Game Over! Final Score: {score}</div>}
-    </div>
+      <div className="reef-container">
+        <h1>Récif en Réparation</h1>
+        <p>Score: {score}</p>
+        <div className="reef">
+          {damagedZones.map((zone) => (
+            <div
+              key={zone.id}
+              className="damaged-zone"
+              style={{
+                left: `${zone.x}%`,
+                top: `${zone.y}%`,
+              }}
+              onClick={() => repairZone(zone.id)}
+            />
+          ))}
+        </div>
+        {gameOver && <div className="game-over">Game Over! Final Score: {score}</div>}
+      </div>
+    </>
   );
 };
 
