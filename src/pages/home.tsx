@@ -10,6 +10,8 @@ import TemperatureGame from '@/games/temperature';
 import ReefRepair from '@/games/reef-repair';
 import FunfactPopup from '@/components/funfact';
 import Accueil from './accueil';
+import ClosingScreen from '@/games/closing-screen';
+import { scroller } from 'react-scroll';
 
 export default function PageHome() {
 
@@ -350,9 +352,19 @@ export default function PageHome() {
           <TemperatureGame />
         </Popup>
   
-        <Popup isOpen={isModalOpenReef} onClose={() => {setIsModalOpenReef(false)}}>
+        <Popup isOpen={isModalOpenReef} onClose={() => {setIsModalOpenReef(false); setIsModalOpenClosing(true)}}>
           <ReefRepair />
         </Popup>
+
+        <Popup isOpen={isModalOpenClosing} onClose={() => {
+         setIsModalOpenClosing(false)
+         scroller.scrollTo('etape1', {
+            duration: 800,
+            smooth: 'easeInOutQuart',
+        });
+        }}>
+            <ClosingScreen />
+         </Popup>
   
         <FunfactPopup isOpen={isFunfactPopupOpen} onClose={() => setFunfactPopupOpen(false)} funfact={currentFunfact!} />
       </div>
