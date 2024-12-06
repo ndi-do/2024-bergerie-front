@@ -8,7 +8,7 @@ import Plancton from '@/games/collecte-plancton';
 import CoralBuilder from '@/games/coral-builder';
 import TemperatureGame from '@/games/temperature';
 import ReefRepair from '@/games/reef-repair';
-import ClosingScreen from '@/games/closing-screen';
+import FunfactPopup from '@/components/funfact';
 
 export default function PageHome() {
 
@@ -18,25 +18,32 @@ export default function PageHome() {
    const [isModalOpenCoral, setIsModalOpenCoral] = useState(false);
    const [isModalOpenTemp, setIsModalOpenTemp] = useState(false);
    const [isModalOpenReef, setIsModalOpenReef] = useState(false);
+   const [isFunfactPopupOpen, setFunfactPopupOpen] = useState(false);
+   const [currentFunfact, setCurrentFunfact] = useState<Funfact>();
+   interface Funfact {
+     title: string;
+     content: string;
+     image: string;
+   }
    const [isModalOpenClosing, setIsModalOpenClosing] = useState(false);
 
    function handleClick(type: string) {
       switch (type) {
-         case 'etape1':
-            setIsModalOpen(true);
-            break;
-         case 'etape2':
-            setIsModalOpenCourants(true);
-            break;
-         case 'etape3':
-            setIsModalOpenPlancton(true);
-            break;
-         case 'etape4':
-            setIsModalOpenCoral(true);
-            break;
+        case 'etape1':
+          setIsModalOpen(true);
+          break;
+        case 'etape2':
+          setIsModalOpenCourants(true);
+          break;
+        case 'etape3':
+          setIsModalOpenPlancton(true);
+          break;
+        case 'etape4':
+          setIsModalOpenCoral(true);
+          break;
         case 'etape8':
-            setIsModalOpenTemp(true);
-            break;
+          setIsModalOpenTemp(true);
+          break;
         case 'finale':
             setIsModalOpenReef(true);
             break;
@@ -46,7 +53,7 @@ export default function PageHome() {
          default:
             break;
       }
-   }
+    }
 
    const sections = [
       {
@@ -274,46 +281,78 @@ export default function PageHome() {
       },
    ];
 
-   return (
+   function handlePopupClose(type: string) {
+      switch (type) {
+        case 'etape1':
+          setCurrentFunfact(sections[0].funfact);
+          break;
+        case 'etape2':
+          setCurrentFunfact(sections[1].funfact);
+          break;
+        case 'etape3':
+          setCurrentFunfact(sections[2].funfact);
+          break;
+        case 'etape4':
+          setCurrentFunfact(sections[3].funfact);
+          break;
+        case 'etape5':
+          setCurrentFunfact(sections[4].funfact);
+          break;
+        case 'etape6':
+          setCurrentFunfact(sections[5].funfact);
+          break;
+        case 'etape7':
+          setCurrentFunfact(sections[6].funfact);
+          break;
+        default:
+          break;
+      }
+      setFunfactPopupOpen(true);
+    }
+
+    return (
       <div>
-         {sections.map((section) => (
-            <Element key={section.id} name={section.id}>
-               <Section id={section.id} title={section.title} content={section.content} image={section.image} trait={section.trait} globe={section.globe} quizzes={section.quizzes} clickAction={handleClick} funfact={section.funfact}/>
-            </Element>
-         ))}
-
-         <Popup isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-            <DefenseDesRecifs />
-         </Popup>
-
-         <Popup isOpen={isModalOpenCourants} onClose={() => setIsModalOpenCourants(false)}>
-            <RelaisDesCourants />
-         </Popup>
-
-         <Popup isOpen={isModalOpenPlancton} onClose={() => setIsModalOpenPlancton(false)}>
-            <Plancton />
-         </Popup>
-       
-         <Popup isOpen={isModalOpenCoral} onClose={() => setIsModalOpenCoral(false)}>
-            <CoralBuilder />    
-         </Popup>
-
-         <Popup isOpen={isModalOpenTemp} onClose={() => setIsModalOpenTemp(false)}>
-            <TemperatureGame />
-         </Popup>
-       
-         <Popup isOpen={isModalOpenReef} onClose={() => {
-            setIsModalOpenReef(false); 
-            setIsModalOpenClosing(true);
-            }}>
-            <ReefRepair />
-         </Popup>
-
-         <Popup isOpen={isModalOpenClosing} onClose={() => setIsModalOpenClosing(false)}>
-            <ClosingScreen />
-         </Popup>
-
-
+        {sections.map((section) => (
+          <Element key={section.id} name={section.id}>
+            <Section
+              id={section.id}
+              title={section.title}
+              content={section.content}
+              image={section.image}
+              trait={section.trait}
+              globe={section.globe}
+              quizzes={section.quizzes}
+              clickAction={handleClick}
+              funfact={section.funfact}
+            />
+          </Element>
+        ))}
+  
+        <Popup isOpen={isModalOpen} onClose={() => {setIsModalOpen(false);handlePopupClose('etape1')}}>
+          <DefenseDesRecifs />
+        </Popup>
+  
+        <Popup isOpen={isModalOpenCourants} onClose={() => {setIsModalOpenCourants(false);handlePopupClose('etape2')}}>
+          <RelaisDesCourants />
+        </Popup>
+  
+        <Popup isOpen={isModalOpenPlancton} onClose={() => {setIsModalOpenPlancton(false);handlePopupClose('etape3')}}>
+          <Plancton />
+        </Popup>
+  
+        <Popup isOpen={isModalOpenCoral} onClose={() =>  {setIsModalOpenCoral(false);handlePopupClose('etape4')}}>
+          <CoralBuilder />
+        </Popup>
+  
+        <Popup isOpen={isModalOpenTemp} onClose={() => {setIsModalOpenTemp(false);handlePopupClose('etape5')}}>
+          <TemperatureGame />
+        </Popup>
+  
+        <Popup isOpen={isModalOpenReef} onClose={() => {setIsModalOpenReef(false);handlePopupClose('etape6')}}>
+          <ReefRepair />
+        </Popup>
+  
+        <FunfactPopup isOpen={isFunfactPopupOpen} onClose={() => setFunfactPopupOpen(false)} funfact={currentFunfact!} />
       </div>
-   );
-}
+    );
+  }
