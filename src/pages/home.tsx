@@ -1,7 +1,46 @@
 import { Element } from 'react-scroll';
 import Section from '@/components/section.tsx';
+import {useState} from "react";
+import Popup from "@/components/popup";
+import DefenseDesRecifs from "@/games/defense-des-recifs.tsx";
+import RelaisDesCourants from '@/games/relais-des-courants';
+import Plancton from '@/games/collecte-plancton';
 
 export default function PageHome() {
+
+   const [isModalOpen, setIsModalOpen] = useState(false);
+   const [isModalOpenCourants, setIsModalOpenCourants] = useState(false);
+   const [isModalOpenPlancton, setIsModalOpenPlancton] = useState(false);
+   const [isModalOpenCoral, setIsModalOpenCoral] = useState(false);
+   const [isModalOpenTemp, setIsModalOpenTemp] = useState(false);
+   const [isModalOpenReef, setIsModalOpenReef] = useState(false);
+
+   function handleClick(type: string) {
+      console.log(type);
+      switch (type) {
+         case 'etape1':
+            setIsModalOpen(true);
+            break;
+         case 'etape2':
+            setIsModalOpenCourants(true);
+            break;
+         case 'etape3':
+            setIsModalOpenPlancton(true);
+            break;
+         case 'etape4':
+            setIsModalOpenCoral(true);
+            break;
+        case 'etape8':
+            setIsModalOpenTemp(true);
+            break;
+        case 'etape9':
+            setIsModalOpenReef(true);
+            break;
+         default:
+            break;
+      }
+   }
+
    const sections = [
       {
          id: 'etape1',
@@ -169,7 +208,7 @@ export default function PageHome() {
          content: 'Le retour triomphal après avoir traversé l’océan Atlantique et le Vendée Globe.',
          image: 'assets/sable_olonne.png',
          trait: 'assets/trait/9.png',
-         globe: 'assets/globe/sable_olonne.png',
+         globe: 'assets/globe/sable_olonne.png'
       },
    ];
 
@@ -177,9 +216,35 @@ export default function PageHome() {
       <div>
          {sections.map((section) => (
             <Element key={section.id} name={section.id}>
-               <Section title={section.title} content={section.content} image={section.image} trait={section.trait} globe={section.globe} quizzes={section.quizzes} />
+               <Section id={section.id} title={section.title} content={section.content} image={section.image} trait={section.trait} globe={section.globe} quizzes={section.quizzes} clickAction={handleClick}/>
             </Element>
          ))}
+
+         <Popup isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+            <DefenseDesRecifs />
+         </Popup>
+
+         <Popup isOpen={isModalOpenCourants} onClose={() => setIsModalOpenCourants(false)}>
+            <RelaisDesCourants />
+         </Popup>
+
+         <Popup isOpen={isModalOpenPlancton} onClose={() => setIsModalOpenPlancton(false)}>
+            <Plancton />
+         </Popup>
+       
+         <Popup isOpen={isModalOpenCoral} onClose={() => setIsModalOpenCoral(false)}>
+             <CoralBuilder />    
+         </Popup>
+
+         <Popup isOpen={isModalOpenTemp} onClose={() => setIsModalOpenTemp(false)}>
+              <TemperatureGame />
+         </Popup>
+       
+       <Popup isOpen={isModalOpenReef} onClose={() => setIsModalOpenReef(false)}>
+           <ReefRepair />
+       </Popup>
+
+
       </div>
    );
 }
