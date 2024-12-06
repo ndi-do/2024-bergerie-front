@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./temperature.css";
 
 const TemperatureGame = () => {
   const [isClicked, setIsClicked] = useState(false);

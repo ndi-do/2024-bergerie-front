@@ -7,7 +7,7 @@
     position: relative;
     height: 50px;
     background-color: #ccc;
-    margin: 20px 0;
+    margin: 80px 0;
     width: 100%;
   }
   
@@ -18,7 +18,7 @@
   
   .moon-phase {
     position: absolute;
-    top: 60px; /* Modifié pour descendre la lune et la rendre visible */
+    top: 120px; /* Modifié pour descendre la lune et la rendre visible */
     font-size: 30px;
     transition: left 0.5s;
   }

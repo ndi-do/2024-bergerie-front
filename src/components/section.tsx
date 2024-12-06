@@ -45,7 +45,7 @@ export default function Section({ id, title, content, image, trait, globe, quizz
       >
          <img src={globe} alt="Globe" className="absolute top-0 right-0 h-auto w-[20%] object-contain z-10" />
          <img src={trait} alt="Trait décoratif" className="absolute top-0 left-0 h-full w-auto object-cover z-10" />
-        <div className="bg-black bg-opacity-50 p-6 rounded-lg text-center max-w-2xl z-20" onClick={() => clickAction(id)}>
+        <div className="bg-black bg-opacity-50 p-6 rounded-lg text-center max-w-2xl z-20 hover-pointer" onClick={() => clickAction(id)}>
             <h2 className="text-4xl font-bold mb-4">{title}</h2>
             <p className="text-lg">{content}</p>
             {
