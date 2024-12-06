@@ -10,6 +10,7 @@ import TemperatureGame from '@/games/temperature';
 import ReefRepair from '@/games/reef-repair';
 import FunfactPopup from '@/components/funfact';
 import ClosingScreen from '@/games/closing-screen';
+import { scroller } from 'react-scroll';
 
 export default function PageHome() {
 
@@ -362,7 +363,13 @@ export default function PageHome() {
             <ReefRepair />
          </Popup>
 
-         <Popup isOpen={isModalOpenClosing} onClose={() => setIsModalOpenClosing(false)}>
+         <Popup isOpen={isModalOpenClosing} onClose={() => {
+            setIsModalOpenClosing(false);
+            scroller.scrollTo('homepage', {
+               duration: 800,
+               smooth: 'easeInOutQuart',
+           });
+         }}>
             <ClosingScreen />
          </Popup>
       </div>
