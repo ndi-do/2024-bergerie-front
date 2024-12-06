@@ -1,15 +1,18 @@
 import { useState } from 'react';
 
-interface QuizFormProps {
+interface QuiFormProps {
+    stage: string;
     question: string;
     answers: { title: string; isCorrect: boolean }[];
     resultMessage: {
         success: string;
         failure: string;
-    };
+    },
+    onUpdatePoints: (points: number) => void;
+    handleNextQuiz: () => void;
 }
 
-export default function QuizForm({ question, answers, resultMessage }: QuizFormProps) {
+export default function QuizForm({ stage, question, answers, resultMessage, onUpdatePoints, handleNextQuiz }: QuiFormProps) {
     const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
     const [showResult, setShowResult] = useState(false);
 
@@ -32,7 +35,15 @@ export default function QuizForm({ question, answers, resultMessage }: QuizFormP
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
+        if (showResult) {
+            handleNextQuiz();
+            setSelectedAnswers([]);
+            setShowResult(false);
+            return;
+        }
+
         if (selectedAnswers.length > 0) {
+            onUpdatePoints(isAllCorrect() ? 1 : 0);
             setShowResult(true);
         }
     };
@@ -50,7 +61,7 @@ export default function QuizForm({ question, answers, resultMessage }: QuizFormP
 
     return (
         <form className="flex flex-col items-center gap-6 mt-6 text-black" onSubmit={handleSubmit}>
-            <h3 className="font-bold text-lg">{question}</h3>
+            <h3 className="font-bold text-lg">{`${stage} - ${question}`}</h3>
             <p className="text-sm text-left w-full max-w-[500px]">
                 {allowMultipleAnswers
                     ? "Plusieurs réponses sont attendues"
@@ -77,14 +88,24 @@ export default function QuizForm({ question, answers, resultMessage }: QuizFormP
                 ))}
             </ul>
             {showResult ? (
-                <p className='text-left w-full max-w-[500px]'>
-                    {isAllCorrect() ? resultMessage.success : resultMessage.failure}
-                </p>
+                <>
+                    <p className='text-left w-full max-w-[500px]'>
+                        {isAllCorrect() ? resultMessage.success : resultMessage.failure}
+                    </p>
+                    <div>
+                        <button
+                            type="submit"
+                            className="bg-[#635BFF] hover:bg-[#4c45d3] text-white font-bold py-2 px-6 rounded-lg mt-4"
+                        >
+                            Question suivante
+                        </button>
+                    </div>
+                </>
             ) : (
                 <div>
                     <button
                         type="submit"
-                        className="bg-[#635BFF] hover:bg-[#4c45d3] text-white font-bold py-2 px-4 rounded-full mt-4"
+                        className="bg-[#635BFF] hover:bg-[#4c45d3] text-white font-bold py-2 px-6 rounded-lg mt-4"
                     >
                         Valider
                     </button>
