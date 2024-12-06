@@ -1,0 +1,34 @@
+.reef-container {
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .reef {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background-color: #4CAF50; /* Couleur du fond du récif */
+    border: 2px solid #006400;
+    margin-top: 20px;
+  }
+  
+  .damaged-zone {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .damaged-zone:hover {
+    transform: scale(1.2);
+  }
+  
+  .game-over {
+    font-size: 24px;
+    color: red;
+    margin-top: 20px;
+  }
+  

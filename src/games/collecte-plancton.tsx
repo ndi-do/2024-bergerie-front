@@ -77,18 +77,20 @@ export default function Plancton() {
 
     // Détecter les collisions entre le récipient et les polluants
     useEffect(() => {
-        const bucketWidth = 10; // Largeur du récipient en pourcentage
-        setPollutants((prev) =>
-            prev.filter((p) => {
-                if (p.y >= 95 && p.x >= bucketX && p.x <= bucketX + bucketWidth) {
-                    // Collision détectée
-                    if (p.type === "good") setScore((prev) => prev + 1);
-                    if (p.type === "bad") setScore((prev) => prev - 1);
-                    return false; // Supprimer le polluant
-                }
-                return true; // Garder le polluant
-            })
-        );
+        setInterval(() => {
+            const bucketWidth = 10; // Largeur du récipient en pourcentage
+            setPollutants((prev) =>
+                prev.filter((p) => {
+                    if (p.y >= 95 && p.x >= bucketX && p.x <= bucketX + bucketWidth) {
+                        // Collision détectée
+                        if (p.type === "good") setScore((prev) => prev + 1);
+                        if (p.type === "bad") setScore((prev) => prev - 1);
+                        return false; // Supprimer le polluant
+                    }
+                    return true; // Garder le polluant
+                })
+            );
+        }, 500)
     }, [bucketX, pollutants]);
 
     if (gameOver) {

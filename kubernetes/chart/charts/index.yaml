@@ -1,0 +1,16 @@
+apiVersion: v1
+entries:
+  ndi-front:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-12-06T04:20:34.032743+01:00"
+    description: A Helm chart for Kubernetes
+    digest: fbfa00844e699ec86a84a58539d6cbbc8ac99e2b52cde5bd6dd0c3994201c37f
+    name: ndi-front
+    sources:
+      - https://github.com/ndi-do/2024-bergerie-front/tree/main/kubernetes/chart
+    type: application
+    urls:
+    - ndi-front-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-12-06T04:20:34.031944+01:00"

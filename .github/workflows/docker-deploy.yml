@@ -4,13 +4,16 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'kubernetes/**'
+      - '.github/**'
 
 permissions:
     contents: read
     packages: write
 
 jobs:
-  build-and-deploy:
+  release:
     runs-on: ubuntu-latest
 
     steps:
@@ -32,5 +35,36 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/ndi-do/2024-bergerie-front:latest
+          tags: ghcr.io/ndi-do/2024-bergerie-front:${{ github.sha }}
           provenance: false
+  update-yaml:
+    runs-on: ubuntu-latest
+    needs: release
+    steps:
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          repository: ndi-do/infrastructure
+          ref: main
+          token: ${{ secrets.PAT }}
+      - name: Install yq
+        run: |
+          sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
+          sudo chmod +x /usr/bin/yq
+      - name: Update deployment.yaml
+        env:
+          VERSION: ${{ github.sha }} 
+        run: |
+          echo "Déploiement de la version $VERSION"
+          yq -ie ".ndi-front.image.tag = \"$VERSION\"" applications/front/helm/values.yaml
+      - name: Commit changes          
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add applications/front/helm/values.yaml
+          git commit -m "Deploying the $VERSION version"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+          VERSION: ${{ github.sha }}
+        
