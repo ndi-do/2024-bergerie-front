@@ -1,6 +1,6 @@
 /* Fond d'écran */
 .credit-page {
-    background-image: url('public/assets/credits/bg.png'); /* Spécifiez le chemin de l'image de fond */
+    background-image: url('assets/credits/bg.png'); /* Spécifiez le chemin de l'image de fond */
     background-size: cover; /* L'image de fond couvre toute la page */
     background-position: center center; /* Centre l'image */
     background-attachment: fixed; /* Fixe l'image de fond lors du défilement */
