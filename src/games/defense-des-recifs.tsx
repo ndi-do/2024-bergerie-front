@@ -43,7 +43,7 @@ export default function DefenseDesRecifs () {
     }, []);
 
     useEffect(() => {
-        const reachedRiff = pollutants.some((p) => p.y > 90); // Si un polluant atteint le bas
+        const reachedRiff = pollutants.some((p) => p.y > 95); // Si un polluant atteint le bas
         if (reachedRiff) {
             setGameOver(true);
         }
