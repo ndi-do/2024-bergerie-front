@@ -9,6 +9,7 @@ import CoralBuilder from '@/games/coral-builder';
 import TemperatureGame from '@/games/temperature';
 import ReefRepair from '@/games/reef-repair';
 import FunfactPopup from '@/components/funfact';
+import ClosingScreen from '@/games/closing-screen';
 
 export default function PageHome() {
 
@@ -353,6 +354,17 @@ export default function PageHome() {
         </Popup>
   
         <FunfactPopup isOpen={isFunfactPopupOpen} onClose={() => setFunfactPopupOpen(false)} funfact={currentFunfact!} />
+
+        <Popup isOpen={isModalOpenReef} onClose={() => {
+            setIsModalOpenReef(false); 
+            setIsModalOpenClosing(true);
+            }}>
+            <ReefRepair />
+         </Popup>
+
+         <Popup isOpen={isModalOpenClosing} onClose={() => setIsModalOpenClosing(false)}>
+            <ClosingScreen />
+         </Popup>
       </div>
     );
   }
