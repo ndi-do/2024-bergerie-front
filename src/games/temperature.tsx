@@ -1,117 +1,93 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const TemperatureGame = () => {
-  // Température initiale et plage idéale
-  const [temperature, setTemperature] = useState(20);
-  const [sunHeat, setSunHeat] = useState(0);
-  const [volcanicHeat, setVolcanicHeat] = useState(0);
-  const [humanActivity, setHumanActivity] = useState(0);
-  const [score, setScore] = useState(0);
+  const [isClicked, setIsClicked] = useState(false);
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const [position, setPosition] = useState(0); // Position de la barre
+  const [lunarPhase, setLunarPhase] = useState(0); // Position de la lune, 0 à 100 (plein cycle lunaire)
+  const [score, setScore] = useState(0); // Suivi du score
+  const [gameOver, setGameOver] = useState(false);
 
-  const targetMinTemperature = 18;
-  const targetMaxTemperature = 22;
 
-  // Événements aléatoires qui affectent la température
-  const [randomEvent, setRandomEvent] = useState('');
-  const [eventEffect, setEventEffect] = useState(0);
-
-  // Fonction pour générer des événements aléatoires
-  const generateRandomEvent = () => {
-    const events = [
-      { name: 'Tempête solaire', effect: 2 },
-      { name: 'Éruption volcanique', effect: 3 },
-      { name: 'Réduction de l\'activité humaine', effect: -1 },
-      { name: 'Période de refroidissement', effect: -2 },
-      { name: 'Aucune perturbation', effect: 0 }
-    ];
-    const randomEventIndex = Math.floor(Math.random() * events.length);
-    setRandomEvent(events[randomEventIndex].name);
-    setEventEffect(events[randomEventIndex].effect);
-  };
-
-  // Mise à jour de la température en fonction des sources et des événements
   useEffect(() => {
-    // Applique les effets des sources et des événements
-    const newTemperature = 20 + sunHeat + volcanicHeat + humanActivity + eventEffect;
-    setTemperature(newTemperature);
-    // Met à jour le score en fonction de l'ajustement réussi de la température
-    if (newTemperature >= targetMinTemperature && newTemperature <= targetMaxTemperature) {
-      setScore(prevScore => prevScore + 1);
+    // Mettre à jour la position de la barre à intervalle régulier
+    const interval = setInterval(() => {
+      setPosition((prevPosition) => (prevPosition + 1) % 100);
+    }, 100);
+
+    // Timer pour la lune (simulation d'un cycle lunaire)
+    const lunarTimer = setInterval(() => {
+      setLunarPhase((prevPhase) => (prevPhase + 1) % 100);
+    }, 400); // Chaque 300ms, la lune se déplace
+
+    return () => {
+      clearInterval(interval);
+      clearInterval(lunarTimer);
+    };
+  }, []);
+
+  const handleClick = () => {
+    setIsClicked(true);
+
+    // Vérification si le clic est synchronisé avec la lune
+    if (Math.abs(position - lunarPhase) < 10) {
+      setIsCorrect(true);
+      setScore((prevScore) => prevScore + 1); // Augmenter le score en cas de succès
+    } else {
+      setIsCorrect(false);
     }
-  }, [sunHeat, volcanicHeat, humanActivity, eventEffect]);
 
-  // Fonction pour ajuster la chaleur du soleil
-const handleSunHeatChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setSunHeat(Number(event.target.value));
-};
-
-  // Fonction pour ajuster la chaleur des volcans
-  const handleVolcanicHeatChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setVolcanicHeat(Number(event.target.value));
+    setTimeout(() => {
+      setIsClicked(false);
+      setIsCorrect(null);
+    }, 1000); // Réinitialiser l'état après un court délai
   };
 
-  // Fonction pour ajuster la chaleur de l'activité humaine
-  const handleHumanActivityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setHumanActivity(Number(event.target.value));
+  // Condition de victoire : 3 bonnes réponses
+  const checkVictory = () => {
+    if (score >= 3) {
+        setGameOver(true); // Marquer la fin du jeu
+
+      return <div className="victory-message">Vous avez gagné ! 🎉</div>;
+    }
+    return null;
   };
 
-  // Vérifier si la température est dans la plage idéale
-  const isTemperatureIdeal = temperature >= targetMinTemperature && temperature <= targetMaxTemperature;
+  if (gameOver) {
+    return (
+        <div className="game-over">
+            <h2>Partie terminée!</h2>
+            <button onClick={() => window.location.reload()}>Rejouer</button>
+        </div>
+    );
+}
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      <h1>Jeu de Température de la Planète</h1>
-      <p>Température actuelle : {temperature}°C</p>
-      <p>Plage idéale : {targetMinTemperature}°C - {targetMaxTemperature}°C</p>
-      <div style={{ margin: '20px 0' }}>
-        <p>Ajuster la chaleur du soleil :</p>
-        <input
-          type="range"
-          min="-5"
-          max="5"
-          value={sunHeat}
-          onChange={handleSunHeatChange}
-        />
-        <p>Chaleur du soleil : {sunHeat}</p>
+    <div className="game-container">
+      <h1>Synchronisation des Marées</h1>
+      <p>Essayez de synchroniser la marée avec la lune en cliquant au bon moment !</p>
+      
+      <div className="moon-phase" style={{ left: `${lunarPhase}%` }}>
+        🌙
       </div>
-      <div style={{ margin: '20px 0' }}>
-        <p>Ajuster la chaleur des volcans :</p>
-        <input
-          type="range"
-          min="-5"
-          max="5"
-          value={volcanicHeat}
-          onChange={handleVolcanicHeatChange}
-        />
-        <p>Chaleur des volcans : {volcanicHeat}</p>
+      
+      <div className="bar-container">
+        <div className="bar" style={{ width: `${position}%` }}></div>
       </div>
-      <div style={{ margin: '20px 0' }}>
-        <p>Ajuster l'activité humaine :</p>
-        <input
-          type="range"
-          min="-5"
-          max="5"
-          value={humanActivity}
-          onChange={handleHumanActivityChange}
-        />
-        <p>Chaleur de l'activité humaine : {humanActivity}</p>
-      </div>
-      <div style={{ marginTop: '20px' }}>
-        {isTemperatureIdeal ? (
-          <p style={{ color: 'green', fontWeight: 'bold' }}>Température idéale atteinte ! 🎉</p>
-        ) : (
-          <p style={{ color: 'red' }}>
-            Température actuelle : {temperature}°C. Ajustez les éléments !
-          </p>
-        )}
-      </div>
-      <div style={{ marginTop: '20px' }}>
-        <p>Événement actuel : {randomEvent}</p>
-        <button onClick={generateRandomEvent}>Générer un événement</button>
-      </div>
-      <div style={{ marginTop: '20px' }}>
-        <p style={{ fontSize: '18px' }}>Score : {score}</p>
-      </div>
+
+      <button onClick={handleClick} disabled={isClicked}>
+        {isClicked ? "Attendez..." : "Cliquez au bon moment"}
+      </button>
+
+      {isCorrect !== null && (
+        <div className={`result ${isCorrect ? "correct" : "incorrect"}`}>
+          {isCorrect ? "Correct!" : "Faux! Essayez encore!"}
+        </div>
+      )}
+
+      {checkVictory()} {/* Affiche le message de victoire si le score est >= 3 */}
+      
+      <div className="score">Score: {score}</div>
     </div>
   );
 };
