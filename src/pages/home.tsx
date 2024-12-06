@@ -9,6 +9,7 @@ import CoralBuilder from '@/games/coral-builder';
 import TemperatureGame from '@/games/temperature';
 import ReefRepair from '@/games/reef-repair';
 import FunfactPopup from '@/components/funfact';
+import Accueil from './accueil';
 import ClosingScreen from '@/games/closing-screen';
 import { scroller } from 'react-scroll';
 
@@ -177,6 +178,8 @@ export default function PageHome() {
 
    return (
       <div>
+                         <Accueil/>
+
         {sections.map((section) => (
           <Element key={section.id} name={section.id}>
             <Section
