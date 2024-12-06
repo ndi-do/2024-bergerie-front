@@ -62,7 +62,7 @@ const CreditPage = () => {
       
           <div className="contribution-chart">
             <img
-              src="public/assets/credits/image.png"  // Spécifiez le chemin relatif de l'image
+              src="assets/credits/image.png"  // Spécifiez le chemin relatif de l'image
               alt="Graphique de participation"
               className="contribution-image" // Ajoutez une classe pour personnaliser l'image via CSS
             />
