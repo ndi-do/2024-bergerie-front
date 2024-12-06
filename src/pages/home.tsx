@@ -8,6 +8,7 @@ import Plancton from '@/games/collecte-plancton';
 import CoralBuilder from '@/games/coral-builder';
 import TemperatureGame from '@/games/temperature';
 import ReefRepair from '@/games/reef-repair';
+import ClosingScreen from '@/games/closing-screen';
 
 export default function PageHome() {
 
@@ -17,6 +18,7 @@ export default function PageHome() {
    const [isModalOpenCoral, setIsModalOpenCoral] = useState(false);
    const [isModalOpenTemp, setIsModalOpenTemp] = useState(false);
    const [isModalOpenReef, setIsModalOpenReef] = useState(false);
+   const [isModalOpenClosing, setIsModalOpenClosing] = useState(false);
 
    function handleClick(type: string) {
       switch (type) {
@@ -37,6 +39,9 @@ export default function PageHome() {
             break;
         case 'finale':
             setIsModalOpenReef(true);
+            break;
+        case 'closing':
+            setIsModalOpenClosing(true);
             break;
          default:
             break;
@@ -211,7 +216,7 @@ export default function PageHome() {
          image: 'assets/sable_olonne.png',
          trait: 'assets/trait/9.png',
          globe: 'assets/globe/sable_olonne.png'
-      },
+      }
    ];
 
    return (
@@ -242,9 +247,16 @@ export default function PageHome() {
             <TemperatureGame />
          </Popup>
        
-       <Popup isOpen={isModalOpenReef} onClose={() => setIsModalOpenReef(false)}>
-           <ReefRepair />
-       </Popup>
+         <Popup isOpen={isModalOpenReef} onClose={() => {
+            setIsModalOpenReef(false); 
+            setIsModalOpenClosing(true);
+            }}>
+            <ReefRepair />
+         </Popup>
+
+         <Popup isOpen={isModalOpenClosing} onClose={() => setIsModalOpenClosing(false)}>
+            <ClosingScreen />
+         </Popup>
 
 
       </div>
