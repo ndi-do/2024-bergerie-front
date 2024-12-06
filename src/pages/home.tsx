@@ -348,7 +348,7 @@ export default function PageHome() {
           <TemperatureGame />
         </Popup>
   
-        <Popup isOpen={isModalOpenReef} onClose={() => {setIsModalOpenReef(false);handlePopupClose('etape6')}}>
+        <Popup isOpen={isModalOpenReef} onClose={() => {setIsModalOpenReef(false)}}>
           <ReefRepair />
         </Popup>
   
